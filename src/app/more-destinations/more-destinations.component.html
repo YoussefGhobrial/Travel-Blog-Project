@@ -1,23 +1,25 @@
 <section class="dest padding">
   <div class="container">
-      <h2 class="heading-tertiary text-center">ALL<span> Blogs</span></h2>
-      <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-10 mx-auto"
-               *ngFor="let card of displayedCards; let i = index"
-               [ngClass]="{'hide': !showAll && displayedCards.length > i + 3}">
-            <div class="card" (click)="goToBlogCardDetails(card)">
-              <img class="card-img-top" [src]="card.image" alt="Card image cap">
-              <div class="text-center">
-                <p> {{ card.title }}</p>
-              </div>
-            </div>
+    <h2 class="heading-tertiary text-center">ALL<span> Blogs</span></h2>
+    <div class="row">
+      <div
+        class="col-lg-4 col-md-6 col-sm-10 mx-auto"
+        *ngFor="let card of displayedCards; let i = index"
+        [ngClass]="{ hide: !showAll && displayedCards.length > i + 3 }"
+      >
+        <div class="card" (click)="goToBlogCardDetails(card)">
+          <img class="card-img-top" [src]="card.image" alt="Card image cap" />
+          <div class="text-center">
+            <p>{{ card.title }}</p>
           </div>
+        </div>
       </div>
+    </div>
 
-      <div class="text-center mt-4">
-        <button (click)="loadMore()" class="btn btn-primary">
-          {{ showAll ? 'عرض أقل' : 'عرض المزيد' }}
-        </button>
-      </div>
+    <div class="text-center mt-4">
+      <button (click)="loadMore()" class="btn btn-primary">
+        {{ showAll ? "show less" : "show more" }}
+      </button>
+    </div>
   </div>
 </section>

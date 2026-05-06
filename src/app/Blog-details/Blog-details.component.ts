@@ -8,8 +8,8 @@ interface Comment {
   name: string;
   text: string;
   time: string;
-  likes: number;       // عدد الإعجابات
-  dislikes: number;    // عدد عدم الإعجابات
+  likes: number;
+  dislikes: number;
 }
 
 @Component({
@@ -17,7 +17,7 @@ interface Comment {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './Blog-details.component.html',
-  styleUrls: ['./Blog-details.component.css']
+  styleUrls: ['./Blog-details.component.css'],
 })
 export class BlogDetailsComponent implements OnInit {
   blogTitle: string = '';
@@ -27,15 +27,17 @@ export class BlogDetailsComponent implements OnInit {
   newCommentName: string = '';
   newComment: string = '';
   comments: Comment[] = [];
-  isEditing: boolean[] = [];  // مصفوفة لتتبع حالة التعديل لكل تعليق
+  isEditing: boolean[] = [];
 
-  constructor(private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    private route: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: Object,
+  ) {}
 
   ngOnInit(): void {
     if (typeof localStorage !== 'undefined') {
       const data = localStorage.getItem('yourKey');
-      // التعامل مع البيانات
-  }
+    }
     const blogId = this.route.snapshot.paramMap.get('id');
     console.log('Blog ID:', blogId);
 
@@ -43,7 +45,7 @@ export class BlogDetailsComponent implements OnInit {
       const storedComments = localStorage.getItem(`comments_${blogId}`);
       if (storedComments) {
         this.comments = JSON.parse(storedComments);
-        this.isEditing = new Array(this.comments.length).fill(false);  // إعداد مصفوفة التعديل
+        this.isEditing = new Array(this.comments.length).fill(false);
       }
 
       const storedPosts = localStorage.getItem('posts');
@@ -73,33 +75,33 @@ export class BlogDetailsComponent implements OnInit {
         name: this.newCommentName,
         text: this.newComment,
         time: new Date().toLocaleString(),
-        likes: 0,        // تعيين الإعجابات إلى 0
-        dislikes: 0      // تعيين عدم الإعجابات إلى 0
+        likes: 0,
+        dislikes: 0,
       };
 
       this.comments.push(newComment);
-      this.isEditing.push(false);  // إضافة حالة جديدة للتعديل
+      this.isEditing.push(false);
       this.newComment = '';
       this.newCommentName = '';
 
       const blogId = this.route.snapshot.paramMap.get('id');
       if (blogId) {
-        localStorage.setItem(`comments_${blogId}`, JSON.stringify(this.comments));
+        localStorage.setItem(
+          `comments_${blogId}`,
+          JSON.stringify(this.comments),
+        );
       }
     }
   }
 
-  // بدء التعديل
   editComment(index: number): void {
     this.isEditing[index] = true;
   }
 
-  // إلغاء التعديل
   cancelEdit(index: number): void {
     this.isEditing[index] = false;
   }
 
-  // حفظ التعديل
   saveEdit(index: number): void {
     this.isEditing[index] = false;
 
@@ -109,10 +111,9 @@ export class BlogDetailsComponent implements OnInit {
     }
   }
 
-  // حذف تعليق
   deleteComment(index: number): void {
     this.comments.splice(index, 1);
-    this.isEditing.splice(index, 1);  // حذف الحالة الخاصة بالتعديل
+    this.isEditing.splice(index, 1);
 
     const blogId = this.route.snapshot.paramMap.get('id');
     if (blogId) {
@@ -120,12 +121,10 @@ export class BlogDetailsComponent implements OnInit {
     }
   }
 
-  // دالة trackBy لضمان الاحتفاظ بالتركيز أثناء التعديل
   trackByFn(index: number, item: any): number {
-    return index;  // استخدم الفهرس كمعرف لكل عنصر
+    return index;
   }
 
-  // دوال الإعجاب وعدم الإعجاب
   likeComment(index: number): void {
     this.comments[index].likes += 1;
     this.saveToLocalStorage();
@@ -136,7 +135,6 @@ export class BlogDetailsComponent implements OnInit {
     this.saveToLocalStorage();
   }
 
-  // حفظ التعليقات المحدثة في LocalStorage
   saveToLocalStorage(): void {
     const blogId = this.route.snapshot.paramMap.get('id');
     if (blogId) {
