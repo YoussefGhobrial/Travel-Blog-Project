@@ -129,15 +129,29 @@ footer .wave#wave4 {
   text-shadow: 0px -1px 0px #fff;
 }
 
+.FooterContainer .facebook span i {
+  color: #46c1f6;
+}
+
 .FooterContainer .facebook:hover span,
 .FooterContainer .facebook:hover .tooltip {
   background-color: #3b5999;
 }
-
-.FooterContainer .instagram:hover span,
-.FooterContainer .instagram:hover .tooltip {
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+/*start of Newest update*/
+.FooterContainer .linkedin span i {
+  color: #0a66c2; /* LinkedIn brand blue */
 }
+
+.FooterContainer .linkedin:hover span,
+.FooterContainer .linkedin:hover .tooltip {
+  background-color: #004182; /* Darker LinkedIn blue for hover */
+}
+
+.FooterContainer a.icon {
+  text-decoration: none;
+  color: inherit;
+}
+/*End of Newest update*/
 
 .FooterContainer .twitter:hover span,
 .FooterContainer .twitter:hover .tooltip {
@@ -167,11 +181,12 @@ footer .wave#wave4 {
   font-size: 20px;
   opacity: 0.7;
   transition: 0.5s;
+  font-weight: bold;
 }
 
 .FooterNav ul li a:hover {
   opacity: 1;
-  color: #3366cc;
+  color: #46c1f6;
 }
 
 .FooterBottom {
@@ -180,7 +195,11 @@ footer .wave#wave4 {
 }
 
 .FooterBottom h3 {
-  color: white;
+  color: rgba(255, 255, 255, 0.7); /* Lighter white for a softer look */
+  font-size: 18px; /* Slightly larger than default, but not too big */
+  font-weight: 400; /* Normal weight for readability */
+  line-height: 1.5; /* Good line spacing */
+  margin: 0; /* Remove default h3 margin */
 }
 
 @media (max-width: 700px) {
