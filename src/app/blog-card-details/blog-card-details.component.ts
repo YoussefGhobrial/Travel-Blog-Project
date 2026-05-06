@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './blog-card-details.component.html',
-  styleUrls: ['./blog-card-details.component.css']
+  styleUrls: ['./blog-card-details.component.css'],
 })
 export class BlogCardDetailsComponent implements OnInit {
   cardDetails: any = {};
@@ -43,7 +43,7 @@ export class BlogCardDetailsComponent implements OnInit {
       const newComment = {
         author,
         text: comment,
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString(),
       };
 
       this.comments.push(newComment);
@@ -63,18 +63,17 @@ export class BlogCardDetailsComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'Cancel'
+      cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        // حذف التعليق
+        // Delete comment
         this.comments.splice(index, 1);
-        // تحديث LocalStorage
+        // Update LocalStorage
         localStorage.setItem(this.storageKey, JSON.stringify(this.comments));
         Swal.fire('Deleted!', 'Your comment has been deleted.', 'success');
       }
     });
   }
-
 
   // Method to edit a comment
   editComment(index: number) {
@@ -89,17 +88,16 @@ export class BlogCardDetailsComponent implements OnInit {
         if (!value) {
           return 'You need to write something!';
         }
-        return null; // هذا يعني أن الإدخال صحيح ولا توجد رسالة خطأ.
-      }
+        return null; // This means input is valid and there is no error message.
+      },
     }).then((result) => {
       if (result.isConfirmed) {
-        // تحديث التعليق
+        // Update comment
         this.comments[index].text = result.value;
-        // تحديث LocalStorage
+        // Update LocalStorage
         localStorage.setItem(this.storageKey, JSON.stringify(this.comments));
         Swal.fire('Saved!', 'Your comment has been updated.', 'success');
       }
     });
   }
-
 }

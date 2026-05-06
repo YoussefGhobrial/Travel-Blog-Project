@@ -4,8 +4,12 @@
   </div>
 
   <h1>{{ cardDetails.title }} Details</h1>
-  <div class="meta">By Mohamed Blogging Tips • March 17, 2017</div>
-  <img [src]="cardDetails.image" alt="{{ cardDetails.title }}" class="img-fluid">
+  <div class="meta">By Youssef Ghobrial • Blogging Tips • March 17, 2017</div>
+  <img
+    [src]="cardDetails.image"
+    alt="{{ cardDetails.title }}"
+    class="img-fluid"
+  />
   <p>{{ cardDetails.description }}</p>
 
   <div class="comments-section">
@@ -26,9 +30,20 @@
     <!-- Add comment form -->
     <div class="add-comment">
       <h3>Add a Comment</h3>
-      <form (submit)="submitComment(author.value, comment.value, $event); author.value=''; comment.value=''">
+      <form
+        (submit)="
+          submitComment(author.value, comment.value, $event);
+          author.value = '';
+          comment.value = ''
+        "
+      >
         <input #author placeholder="Your Name" type="text" required />
-        <textarea #comment placeholder="Your Comment" rows="5" required></textarea>
+        <textarea
+          #comment
+          placeholder="Your Comment"
+          rows="5"
+          required
+        ></textarea>
         <button type="submit">Submit</button>
       </form>
     </div>

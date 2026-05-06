@@ -131,7 +131,7 @@ export class MoreDestinationsComponent {
       setTimeout(() => {
         this.displayedCards = this.allCards.slice(
           0,
-          Math.max(3, this.displayedCards.length - 3)
+          Math.max(3, this.displayedCards.length - 3),
         );
         if (this.displayedCards.length === 3) {
           this.showAll = false;

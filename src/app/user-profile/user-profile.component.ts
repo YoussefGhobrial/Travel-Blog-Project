@@ -10,10 +10,10 @@ import Swal from 'sweetalert2';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule]
+  imports: [FormsModule, CommonModule, RouterModule],
 })
 export class UserProfileComponent implements OnInit {
-  user: any = { name: 'Admin', email: '' }; // إضافة اسم المستخدم هنا
+  user: any = { name: 'Admin', email: '' }; // add user name here
   posts: any[] = [];
   newPostTitle = '';
   newPostContent = '';
@@ -21,8 +21,8 @@ export class UserProfileComponent implements OnInit {
   successMessage: string = '';
   editMode: boolean = false;
   editingPostId: string | null = null;
-  searchTerm: string = ''; // للبحث
-  sortBy: string = 'title'; // فرز حسب العنوان افتراضيًا
+  searchTerm: string = ''; // for searching
+  sortBy: string = 'title'; // sort by title by default
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
@@ -39,10 +39,12 @@ export class UserProfileComponent implements OnInit {
   addPost(): void {
     if (typeof localStorage !== 'undefined') {
       const data = localStorage.getItem('yourKey');
-      // التعامل مع البيانات
-  }
+      // Handle data
+    }
     if (this.editingPostId) {
-      const postIndex = this.posts.findIndex((post) => post.id === this.editingPostId);
+      const postIndex = this.posts.findIndex(
+        (post) => post.id === this.editingPostId,
+      );
       if (postIndex !== -1) {
         this.posts[postIndex].title = this.newPostTitle;
         this.posts[postIndex].content = this.newPostContent;
@@ -50,10 +52,10 @@ export class UserProfileComponent implements OnInit {
 
         localStorage.setItem('posts', JSON.stringify(this.posts));
         Swal.fire({
-          title: 'تم التعديل بنجاح!',
-          text: 'تم تعديل المدونة بنجاح.',
+          title: 'Updated Successfully!',
+          text: 'The blog has been updated successfully.',
           icon: 'success',
-          confirmButtonText: 'موافق'
+          confirmButtonText: 'OK',
         });
         this.resetForm();
       }
@@ -63,15 +65,15 @@ export class UserProfileComponent implements OnInit {
         title: this.newPostTitle,
         content: this.newPostContent,
         date: new Date(),
-        image: this.selectedFile
+        image: this.selectedFile,
       };
       this.posts.push(newPost);
       localStorage.setItem('posts', JSON.stringify(this.posts));
       Swal.fire({
-        title: 'تمت الإضافة بنجاح!',
-        text: 'تم إضافة المدونة الجديدة.',
+        title: 'Added Successfully!',
+        text: 'The new blog has been added successfully.',
         icon: 'success',
-        confirmButtonText: 'موافق'
+        confirmButtonText: 'OK',
       });
       this.resetForm();
     }
@@ -93,20 +95,26 @@ export class UserProfileComponent implements OnInit {
 
   deletePost(postId: number): void {
     Swal.fire({
-      title: 'هل أنت متأكد؟',
-      text: "لن يمكنك التراجع بعد الحذف!",
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'نعم، احذف!',
-      cancelButtonText: 'إلغاء'
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        const updatedPosts = this.posts.filter((post: any) => post.id !== postId);
+        const updatedPosts = this.posts.filter(
+          (post: any) => post.id !== postId,
+        );
         localStorage.setItem('posts', JSON.stringify(updatedPosts));
         this.posts = updatedPosts;
-        Swal.fire('تم الحذف!', 'تم حذف المدونة بنجاح.', 'success');
+        Swal.fire(
+          'Deleted!',
+          'The blog has been deleted successfully.',
+          'success',
+        );
       }
     });
   }
@@ -139,16 +147,19 @@ export class UserProfileComponent implements OnInit {
     let filtered = this.posts;
 
     if (this.searchTerm) {
-      filtered = filtered.filter(post =>
-        post.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        post.content.toLowerCase().includes(this.searchTerm.toLowerCase())
+      filtered = filtered.filter(
+        (post) =>
+          post.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          post.content.toLowerCase().includes(this.searchTerm.toLowerCase()),
       );
     }
 
     if (this.sortBy === 'title') {
       filtered.sort((a, b) => a.title.localeCompare(b.title));
     } else if (this.sortBy === 'date') {
-      filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      filtered.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+      );
     }
 
     return filtered;

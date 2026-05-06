@@ -3,44 +3,66 @@
     <h2 class="my-4">"Share your travel stories with the world."</h2>
 
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="ابحث عن مدونة" [(ngModel)]="searchTerm">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search blogs"
+        [(ngModel)]="searchTerm"
+      />
     </div>
 
     <div class="form-group">
       <label for="postTitle">Post Title:</label>
-      <input class="form-control" id="postTitle" [(ngModel)]="newPostTitle" name="postTitle" />
+      <input
+        class="form-control"
+        id="postTitle"
+        [(ngModel)]="newPostTitle"
+        name="postTitle"
+      />
     </div>
     <div class="form-group">
       <label for="postContent">Post Content:</label>
-      <textarea class="form-control" [(ngModel)]="newPostContent" name="postContent"></textarea>
+      <textarea
+        class="form-control"
+        [(ngModel)]="newPostContent"
+        name="postContent"
+      ></textarea>
     </div>
     <div class="upload-btn-wrapper">
       <button class="btn-custom">Upload Image</button>
       <input type="file" id="postImage" (change)="onFileSelected($event)" />
     </div>
     <button class="btn btn-success" (click)="addPost()">
-      {{ editingPostId ? 'Update Blog' : 'Add Blog' }}
+      {{ editingPostId ? "Update Blog" : "Add Blog" }}
     </button>
   </div>
 
   <div class="stats-section">
-    <h3>إحصائيات المدونة</h3>
-    <p>عدد المدونات: {{ posts.length }}</p>
+    <h3>Blog Statistics</h3>
+    <p>Number of Blogs: {{ posts.length }}</p>
   </div>
 
   <div class="row mt-5">
     <div class="col-md-4" *ngFor="let post of filteredAndSortedPosts">
       <div class="card mb-4 shadow-sm">
         <a [routerLink]="['/blog-details', post.id]">
-          <img class="card-img-top" [src]="post.image || 'https://via.placeholder.com/350x150'" alt="Blog Image" />
+          <img
+            class="card-img-top"
+            [src]="post.image || 'https://via.placeholder.com/350x150'"
+            alt="Blog Image"
+          />
         </a>
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <p class="card-text">{{ post.content }}</p>
           <small class="text-muted">Posted by: {{ user.name }}</small>
           <div class="d-flex justify-content-between align-items-center mt-3">
-            <button class="btn btn-info" (click)="editPost(post)">Edit Blog</button>
-            <button class="btn btn-danger" (click)="deletePost(post.id)">Delete Blog</button>
+            <button class="btn btn-info" (click)="editPost(post)">
+              Edit Blog
+            </button>
+            <button class="btn btn-danger" (click)="deletePost(post.id)">
+              Delete Blog
+            </button>
           </div>
         </div>
       </div>
