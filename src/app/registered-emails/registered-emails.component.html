@@ -1,7 +1,0 @@
-<h2>البريد الإلكتروني المسجل:</h2>
-<ul *ngIf="getRegisteredEmails().length > 0; else noEmails">
-  <li *ngFor="let email of getRegisteredEmails()">{{ email }}</li>
-</ul>
-<ng-template #noEmails>
-  <p>لا توجد عناوين بريد إلكتروني مسجلة.</p>
-</ng-template>
