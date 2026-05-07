@@ -13,21 +13,56 @@ import { DetailComponent } from './detail/detail.component';
 import { BlogCardDetailsComponent } from './blog-card-details/blog-card-details.component';
 import { OriginalUserprofileComponent } from './original-userprofile/original-userprofile.component';
 
-
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // إعادة التوجيه إلى الصفحة الرئيسية
-  { path: 'home', component: HomeComponent, title: 'Traveler' },
-  { path: 'more-destinations', component: MoreDestinationsComponent, title: 'More Destinations' },
-  { path: 'login', component: LoginFormComponent, title: 'Login' },
-  { path: 'sign-up', component: SignUpComponent , title: 'Sign Up' },
-  { path: 'contact-us', component: ContactUsComponent, title: 'Contact Us' },
-  { path: 'about', component: AboutComponent, title: 'About' },
-  { path: 'destination/:id', component: DetailComponent }, // تفاصيل الوجهة
-  { path: 'blog-details/:id', component: BlogDetailsComponent, title: 'Blog Details' }, // تفاصيل المدونة
-  { path: 'user-profile/:id', component: UserProfileComponent, title: 'User Profile' }, // ملف المستخدم
-  { path: 'user-profile', component: UserProfileComponent, title: 'User Profile' }, // ملف المستخدم بدون ID
-  { path: 'one/:tag', component: OneComponent }, // المسار للكارد الواحد
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: '',
+    component: HomeComponent,
+    title: 'Traveler | Youssef Ghobrial',
+  },
+  {
+    path: 'more-destinations',
+    component: MoreDestinationsComponent,
+    title: 'More Destinations | Youssef Ghobrial',
+  },
+  {
+    path: 'login',
+    component: LoginFormComponent,
+    title: 'Login | Youssef Ghobrial',
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
+    title: 'Sign Up | Youssef Ghobrial',
+  },
+  {
+    path: 'contact-us',
+    component: ContactUsComponent,
+    title: 'Contact Us | Youssef Ghobrial',
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+    title: 'About | Youssef Ghobrial',
+  },
+  { path: 'destination/:id', component: DetailComponent },
+  {
+    path: 'blog-details/:id',
+    component: BlogDetailsComponent,
+    title: 'Blog Details | Youssef Ghobrial',
+  },
+  {
+    path: 'user-profile/:id',
+    component: UserProfileComponent,
+    title: 'User Profile | Youssef Ghobrial',
+  },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent,
+    title: 'User Profile | Youssef Ghobrial',
+  },
+  { path: 'one/:tag', component: OneComponent },
   { path: 'blog-card-details/:id', component: BlogCardDetailsComponent },
   { path: 'original-userprofile', component: OriginalUserprofileComponent },
-  { path: '**', component: PageNotFoundComponent } // مسار الصفحة غير الموجودة
+  { path: '**', component: PageNotFoundComponent },
 ];
