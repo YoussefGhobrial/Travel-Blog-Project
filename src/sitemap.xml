@@ -4,36 +4,47 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
 <url>
-  <loc>https://travelblog.youssefghobrial.eu.cc/home</loc>
-  <lastmod>2026-05-07T14:16:59+00:00</lastmod>
+  <loc>https://travelblog.youssefghobrial.eu.cc/</loc>
+  <lastmod>2026-05-07T15:12:16+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://travelblog.youssefghobrial.eu.cc/more-destinations</loc>
-  <lastmod>2026-05-07T14:17:00+00:00</lastmod>
+  <lastmod>2026-05-07T15:12:17+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://travelblog.youssefghobrial.eu.cc/user-profile</loc>
-  <lastmod>2026-05-07T14:17:00+00:00</lastmod>
+  <lastmod>2026-05-07T15:12:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://travelblog.youssefghobrial.eu.cc/original-userprofile</loc>
-  <lastmod>2026-05-07T14:17:00+00:00</lastmod>
+  <lastmod>2026-05-07T15:12:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://travelblog.youssefghobrial.eu.cc/contact-us</loc>
-  <lastmod>2026-05-07T14:17:00+00:00</lastmod>
+  <lastmod>2026-05-07T15:12:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://travelblog.youssefghobrial.eu.cc/about</loc>
-  <lastmod>2026-05-07T14:17:01+00:00</lastmod>
+  <lastmod>2026-05-07T15:12:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://travelblog.youssefghobrial.eu.cc/home</loc>
+  <lastmod>2026-05-07T15:12:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://travelblog.youssefghobrial.eu.cc/blogs</loc>
+  <lastmod>2026-05-07T15:12:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
