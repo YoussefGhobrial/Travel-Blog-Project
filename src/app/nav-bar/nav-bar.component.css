@@ -1,6 +1,19 @@
 nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
   margin-right: 110px;
   margin-left: 110px;
+  background-color: white !important;
+}
+
+@media screen and (max-width: 991px) {
+  nav {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }
 nav a img {
   max-width: 100%;
@@ -84,15 +97,54 @@ nav a img {
 
 /* media query */
 @media screen and (max-width: 991px) {
-  .navbar-toggle {
-    background-color: #dddddd;
-    border: 4px solid #bbbbbb;
-    border-radius: 20px;
-  }
-  /* nav a img {
+  .container-fluid {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-  } */
+    align-items: center;
+    position: relative;
+    padding: 10px 0;
+  }
+
+  .navbar-toggler {
+    z-index: 1002;
+  }
+
+  .navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 !important;
+    z-index: 1002;
+  }
+
+  /* The menu overlay */
+  .navbar-toggle {
+    position: absolute;
+    top: 100%; /* Positions it right below the navbar header */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #ffffff; /* Solid background so content doesn't bleed through */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1001;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+  }
+
+  /* Ensure the collapse transition works well with absolute positioning */
+  .collapse:not(.show) {
+    display: none !important;
+  }
 }
 /* end media query */
+
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}

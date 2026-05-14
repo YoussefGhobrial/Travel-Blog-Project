@@ -10,6 +10,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   word-wrap: break-word;
+  padding-top: 100px;
 }
 :root {
   --bg-color: #fff;
@@ -40,4 +41,8 @@ body.contact-background {
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }

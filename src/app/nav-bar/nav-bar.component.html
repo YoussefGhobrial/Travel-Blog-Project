@@ -1,26 +1,27 @@
 <!-- added box shadow in nav -->
 <!-- the height  problem under the nav is in box shadow in nav class (p-3 mb-5)  -->
+<div class="menu-backdrop" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
+
 <nav
   class="navbar navbar-expand-lg bg-body-tertiary shadow-sm p-3 bg-body-tertiary rounded"
 >
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"
-      ><img src="/Project Logo.png" alt="Logo"
-    /></a>
     <button
       class="navbar-toggler"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+    <a class="navbar-brand" href="/"
+      ><img src="/Project Logo.png" alt="Logo"
+    /></a>
     <!-- new class navbar-toggle -->
     <div
       class="collapse navbar-collapse navbar-toggle"
+      [class.show]="isMenuOpen"
       id="navbarSupportedContent"
     >
       <!-- new add: 'align-items-center' -->
@@ -28,13 +29,20 @@
         class="navbar-nav me-auto mb-2 mb-lg-0 text-sm-center align-items-center"
       >
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="">Home</a>
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href=""
+            (click)="closeMenu()"
+            >Home</a
+          >
         </li>
         <li class="nav-item">
           <a
             class="nav-link active"
             aria-current="page"
             routerLink="/more-destinations"
+            (click)="closeMenu()"
             >Blogs</a
           >
         </li>
@@ -43,6 +51,7 @@
             class="nav-link active"
             aria-current="page"
             routerLink="/user-profile"
+            (click)="closeMenu()"
             >Create blog</a
           >
         </li>
@@ -51,6 +60,7 @@
             class="nav-link active"
             aria-current="page"
             routerLink="/original-userprofile"
+            (click)="closeMenu()"
             >User profile</a
           >
         </li>
@@ -60,6 +70,7 @@
             aria-current="page"
             routerLink="contact-us"
             routerLinkActive="active"
+            (click)="closeMenu()"
             >Contact</a
           >
         </li>
@@ -69,6 +80,7 @@
             aria-current="page"
             routerLink="about"
             routerLinkActive="active"
+            (click)="closeMenu()"
             >About</a
           >
         </li>
